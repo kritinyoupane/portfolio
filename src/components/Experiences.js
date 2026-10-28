@@ -50,7 +50,6 @@ export default function Experiences() {
               <path d="M276 282 Q 258 286 250 270" stroke="#e3a72f" strokeWidth="1.5" fill="none" />
             </g>
           </svg>
-          <p className="label text-ink/50 text-center mt-2">Tap a circle</p>
         </Reveal>
 
         <div>
