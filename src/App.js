@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Nav from './components/Nav';
+import AltMeter from './components/AltMeter';
+import Hero from './components/Hero';
+import Trail from './components/Trail';
+import Dataset from './components/Dataset';
+import Projects from './components/Projects';
+import Experiences from './components/Experiences';
+import Papers from './components/Papers';
+import Contact from './components/Contact';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Nav />
+      <AltMeter />
+      <main>
+        <Hero />
+        <Trail />
+        <Dataset />
+        <Projects />
+        <Experiences />
+        <Papers />
+      </main>
+      <Contact />
+    </>
   );
 }
-
-export default App;
