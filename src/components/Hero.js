@@ -61,7 +61,7 @@ export default function Hero() {
         <figure className="relative w-full max-w-[320px] md:max-w-none mx-auto md:ml-auto">
           <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-t-full border-2 border-clay" aria-hidden="true" />
           <div className="relative aspect-[3/4] rounded-t-full overflow-hidden bg-paper2 border-2 border-ink">
-            <img src="/kriti.jpg" alt="Portrait of Kriti Nyoupane" className="w-full h-full object-cover object-[50%_32%]" />
+            <img src={`${process.env.PUBLIC_URL}/kriti.jpg`} alt="Portrait of Kriti Nyoupane" className="w-full h-full object-cover object-[50%_32%]" />
           </div>
           <figcaption className="label text-ink/60 mt-9 text-center">Kriti · Kathmandu, Nepal</figcaption>
         </figure>
