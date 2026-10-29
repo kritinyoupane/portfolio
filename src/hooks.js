@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function useInView(threshold = 0.25) {
   const ref = useRef(null);
@@ -32,20 +32,20 @@ export function useCountUp(target, active, duration = 1600, decimals = 0) {
   return v.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
 }
 
-export function Reveal({ children, className = '', delay = 0, as: Tag = 'div' }) {
-  const [ref, inView] = useInView(0.15);
-  return (
-    <Tag ref={ref} style={{ transitionDelay: `${delay}ms` }} className={`reveal ${inView ? 'in' : ''} ${className}`}>
-      {children}
-    </Tag>
-  );
+// Per-visitor state (likes, saves, seen stories) kept in localStorage when it is available.
+export function useStored(key, initial) {
+  const [value, setValue] = useState(() => {
+    try {
+      const raw = window.localStorage.getItem(key);
+      return raw === null ? initial : JSON.parse(raw);
+    } catch (e) {
+      return initial;
+    }
+  });
+  useEffect(() => {
+    try { window.localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* storage unavailable */ }
+  }, [key, value]);
+  return [value, setValue];
 }
 
-export function SectionHead({ n, kicker, title }) {
-  return (
-    <Reveal className="mb-12">
-      <p className="label text-clay mb-3">{n} — {kicker}</p>
-      <h2 className="font-display text-4xl md:text-5xl font-semibold leading-tight max-w-3xl">{title}</h2>
-    </Reveal>
-  );
-}
+export const toast = (text) => window.dispatchEvent(new CustomEvent('toast', { detail: text }));

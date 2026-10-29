@@ -6,29 +6,35 @@
   html { scroll-behavior: smooth; }
   body {
     @apply bg-paper text-ink font-sans antialiased;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .16 0 0 0 0 .13 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  ::selection { background: #e3a72f; color: #1b2a22; }
+  ::selection { background: #d3a6c6; color: #1c1b22; }
 }
 
-.label { @apply font-mono text-[11px] uppercase tracking-[0.18em]; }
+.label { @apply text-[11px] font-medium uppercase tracking-[0.2em]; }
 
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
-
-@keyframes drift { from { transform: translate(0,0) scale(1.04); } to { transform: translate(-1.5%, 1%) scale(1.08); } }
-.drift { animation: drift 24s ease-in-out infinite alternate; }
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .drift { animation: none; }
-  html { scroll-behavior: auto; }
-}
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
 
 @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+@keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.25); } 100% { transform: scale(1); } }
+.pop { animation: pop .35s ease; }
+
+@keyframes burst {
+  0% { opacity: 0; transform: scale(.4); }
+  15% { opacity: 1; transform: scale(1.15); }
+  30% { transform: scale(.95); }
+  45%, 75% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+.burst { display: block; animation: burst .9s ease forwards; }
 
 @keyframes node-pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.25); opacity: .75; } }
 @keyframes edge-flow { to { stroke-dashoffset: -14; } }
 .node-pulse { animation: node-pulse 3s ease-in-out infinite; }
 .edge-flow { animation: edge-flow 1.4s linear infinite; }
-@media (prefers-reduced-motion: reduce) { .node-pulse, .edge-flow { animation: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .node-pulse, .edge-flow, .pop, .burst { animation: none; }
+}

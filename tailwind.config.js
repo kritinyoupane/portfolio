@@ -4,18 +4,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        paper: '#f2ebdb',
-        paper2: '#e8dfc8',
-        ink: '#1b2a22',
-        moss: '#4f6f3a',
-        clay: '#c0532b',
-        sun: '#e3a72f',
-        river: '#2f6f7e',
+        paper: '#fbfbfa',
+        paper2: '#efeef0',
+        ink: '#1c1b22',
+        accent: '#6b2d5c',
+        accentl: '#d3a6c6',
       },
       fontFamily: {
         display: ['Fraunces', 'Georgia', 'serif'],
         sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
-        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
     },
   },

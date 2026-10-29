@@ -62,12 +62,12 @@ function buildPaths() {
   return { minor: minor.join(''), major: major.join('') };
 }
 
-export default function Contours({ className = '', stroke = '#4f6f3a' }) {
+export default function Contours({ className = '', stroke = '#1c1b22' }) {
   const { minor, major } = useMemo(buildPaths, []);
   return (
     <svg className={className} viewBox={`0 0 ${GW} ${GH}`} preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <path d={minor} fill="none" stroke={stroke} strokeOpacity="0.35" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-      <path d={major} fill="none" stroke={stroke} strokeOpacity="0.8" strokeWidth="1.8" vectorEffect="non-scaling-stroke" />
+      <path d={minor} fill="none" stroke={stroke} strokeOpacity="0.2" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+      <path d={major} fill="none" stroke={stroke} strokeOpacity="0.45" strokeWidth="1.6" vectorEffect="non-scaling-stroke" />
     </svg>
   );
 }
